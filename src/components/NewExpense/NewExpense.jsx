@@ -8,11 +8,14 @@ const NewExpense = (props) => {
   const expenseSaveHandler = (enteredExpenseData) => {
     const expenseData = {
       title: enteredExpenseData.title,
-      amount: enteredExpenseData.amount,
+      amount: parseFloat(enteredExpenseData.amount),
       date: new Date(enteredExpenseData.date),
       id: Math.random().toString(),
     };
+    
     props.onAddExpense(expenseData);
+
+    setExpenseFormVisible(false);
   };
 
   const cancelExpenseHandler = () => {
@@ -35,7 +38,6 @@ const NewExpense = (props) => {
 
   return (
     <div className="new-expense">
-      {/* <ExpenseForm onSaveExpenseData={expenseSaveHandler} /> */}
       {addExpenseContent}
     </div>
   );
